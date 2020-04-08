@@ -44,13 +44,25 @@ then
         if [ $Distribution == 'Ubuntu' ]
         then 
             echo "Ubuntu"
+            cd ~/Downloads
             echo 'downloading openvino'
-            #curl http://registrationcenter-download.intel.com/akdlm/irc_nas/16345/l_openvino_toolkit_p_2020.1.023.tgz --output vino.tgz
+            # curl http://registrationcenter-download.intel.com/akdlm/irc_nas/16345/l_openvino_toolkit_p_2020.1.023.tgz
             echo 'finished downloading'
+            tar -xvzf l_openvino_toolkit_p_2020.1.023.tgz
+            cd l_openvino_toolkit_p_2020.1.023
+            sudo ./install.sh
+            
+            echo 'Installing dependencies'
+            cd /opt/intel/openvino/install_dependencies
+            sudo -E ./install_openvino_dependencies.sh
 
+            echo 'Setting environment variables'
+            # user_directory=
+            echo 'source /opt/intel/openvino/bin/setupvars.sh' >> ~/.bashrc
         else
             echo'Linux Distribution not supported by OpenVINO or require some modification'
         fi
+
     fi
 elif [ "$p_name" == 'Windows_NT' ]
 then
