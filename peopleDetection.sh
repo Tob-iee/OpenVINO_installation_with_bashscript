@@ -32,11 +32,11 @@ function install_openVINO_Linux {
     pip3 install --upgrade numpy    
     cd ~/Downloads
     echo 'downloading openvino'
-    curl http://registrationcenter-download.intel.com/akdlm/irc_nas/16345/l_openvino_toolkit_p_2020.1.023.tgz
+    curl http://registrationcenter-download.intel.com/akdlm/irc_nas/16345/l_openvino_toolkit_p_2020.1.023.tgz --output l_openvino_toolkit_p_2020.1.023.tgz
     echo 'finished downloading'
     tar -xvzf l_openvino_toolkit_p_2020.1.023.tgz
     cd l_openvino_toolkit_p_2020.1.023
-    echo "To install with CLI press 1"
+    echo "Installing openVINO"
     sudo ./install.sh
     
     echo 'Installing dependencies'
@@ -62,14 +62,14 @@ then
     then
     # install openVINO toolkkit
         install_openVINO_Mac
-    fi
-    # if python version is < 3.5 or python isn't installed, do
-    elif [ $py_version == 0 ]
-    then
+   
+    # if python version is < 3.5 or python isn't installed,
+    else
         # use brew to install python
         brew install python3
         # install openVINO toolkit
         install_openVINO_Mac
+    fi
 
 elif [ "$p_name" == 'Linux' ]
 then 
@@ -82,10 +82,9 @@ then
         then 
             install_openVINO_Linux
         else
-            echo'Linux Distribution not supported by OpenVINO or require some modification'
+            echo 'Linux Distribution not supported by OpenVINO or require some modification'
         fi
-    elif [ $py_version == 0 ]
-    then
+    else
         sudo apt-get update
         sudo apt-get install python3.6
         install_openVINO_Linux
