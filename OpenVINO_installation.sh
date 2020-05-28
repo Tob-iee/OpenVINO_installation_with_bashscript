@@ -21,6 +21,8 @@ function install_openVINO_Mac {
     echo 'source /opt/intel/openvino/bin/setupvars.sh' >> ~/.bash_profile
     # Unmount the image
     hdiutil unmount "/Volumes/m_openvino_toolkit_p_2020.2.117"
+    # Delete the image
+    rm vino.dmg
     echo 'OpenVINO toolkit installation completed'
 }
 # function to install open_vino on linux
