@@ -1,4 +1,4 @@
-The script was created to mainly to automate the installation of openvino tool kit based on a the peopleDetection authored by ajudges. 
+This script is to automate the installation of openvino toolkit for computer vision applications.
 
 
 Run "chmod +x OpenVINO_installation.sh" on your terminal  to give the system permission to execute a the peopleDetection.sh script
